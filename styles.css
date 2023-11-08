@@ -1,22 +1,31 @@
 *{
     box-sizing: border-box;
-    border: 1px #222 solid;
+    border: 0px #222 solid;
     margin: 0;
     padding: 0;
 }
 
 body{
-    height: 100vh;
+    padding-top: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #222;
     overflow: hidden;
 }
 
+.btn{
+    margin-bottom: 25px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
 .container{
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 550px;
     flex-wrap: wrap;
     background-color: #eee;
 }

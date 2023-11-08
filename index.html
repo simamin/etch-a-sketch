@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset = "UTF-8">
         <title>etch a sketch</title>
-        <link rel="stylesheet" href="./styles.css">
+        <link rel = "stylesheet" href = "./styles.css">
     </head>
     <body>
-        <div class="container"></div>
+        <button class = "btn">new grid</button>
+        <div class = "container"></div>
 
         <script>
 
             const grid = document.querySelector('.container');
+            const newGridBtn = document.querySelector('.btn');
 
-            function createGrid(){
-                for (let i = 1; i<257; i++){
+            function createGrid(width){
+                grid.textContent = '';
+                for (let i = 1; i < (width * width) + 1 ; i++){
                     const square = document.createElement('div');
                     square.classList = 'square';
+                    square.style.width = `${100 / width}%`;
+                    square.style.paddingBottom = `${100 / width}%`;
                     grid.appendChild(square);
 
                     square.addEventListener('mouseover', changeColour);
@@ -26,7 +31,19 @@
                 this.style.backgroundColor = '#222';
             }
 
-            createGrid();
+            const defaultWidth = 16;
+            createGrid(defaultWidth);
+
+            newGridBtn.addEventListener('click', function newGrid(){
+                let width = prompt('width of grid (number of squares)');
+                if (width > 100 || width <= 0){
+                    alert('please enter number between 1-100');
+                    newGrid();
+                }
+                else {
+                    createGrid(width);
+                }
+            });
 
         </script>
     </body>
