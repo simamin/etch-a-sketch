@@ -6,13 +6,17 @@
         <link rel = "stylesheet" href = "./styles.css">
     </head>
     <body>
-        <button class = "btn">new grid</button>
+        <div class="btnContainer">
+            <button class = "gridBtn btn">new grid</button>
+            <button class = "rainbowBtn btn">rainbow mode</button>
+        </div>
         <div class = "container"></div>
 
         <script>
 
             const grid = document.querySelector('.container');
-            const newGridBtn = document.querySelector('.btn');
+            const newGridBtn = document.querySelector('.gridBtn');
+            const rainbowBtn = document.querySelector('.rainbowBtn');
 
             function createGrid(width){
                 grid.textContent = '';
@@ -23,12 +27,23 @@
                     square.style.paddingBottom = `${100 / width}%`;
                     grid.appendChild(square);
 
-                    square.addEventListener('mouseover', changeColour);
+                    square.addEventListener('mouseover', fillSquare);
                 }
             }
 
-            const changeColour = function (){
-                this.style.backgroundColor = '#222';
+            const fillSquare = function (){
+                if (rainbowMode === true){
+                    this.style.backgroundColor = generateColour();
+                }
+                else this.style.backgroundColor = '#222';
+            }
+
+            function generateColour(){
+                let rgb = [];
+                for (let i = 0; i < 3; i++){
+                    rgb.push(Math.floor(Math.random() * 256) + 1)
+                }
+                return `rgb(${rgb.join(',')})`;
             }
 
             const defaultWidth = 16;
@@ -44,6 +59,14 @@
                     createGrid(width);
                 }
             });
+
+            let rainbowMode = false;
+
+            rainbowBtn.addEventListener('click', function toggleRainbowMode(){
+                rainbowMode = !rainbowMode;
+                rainbowBtn.classList.toggle('activeBtn')
+            });
+
 
         </script>
     </body>

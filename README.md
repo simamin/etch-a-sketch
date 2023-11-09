@@ -6,10 +6,9 @@ View project [here](https://noepse.github.io/etch-a-sketch/)
 
 ### future features
 - check if input is a number via regex
-- rainbow mode
 - greyscale mode
 - eraser
-- clear canvas
+- clear grid
 - save art
 
 ### contact

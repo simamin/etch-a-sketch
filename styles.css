@@ -21,6 +21,10 @@ body{
     border-radius: 20px;
 }
 
+.activeBtn{
+    background-color: aqua;
+}
+
 .container{
     display: flex;
     align-items: center;
